@@ -9,14 +9,18 @@ export const styles = StyleSheet.create({
     flexDirection: 'column-reverse'
   },
   boxUserTop: {
-    flexDirection: "row-reverse",
+    flexDirection: "row",
     alignItems: "center",
     marginVertical: marginBoxUser,
   },
   boxUserBottom: {
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     alignItems: "center",
     marginVertical: marginBoxUser,
+  },
+  score: {
+    fontFamily: 'Playfair-Display-semibold',
+    fontSize: 24,
   },
   boxImage: {
     width: imageSize,

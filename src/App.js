@@ -8,7 +8,7 @@ import { styles } from "./styles";
 import { useFonts } from "expo-font";
 import { useState } from "react";
 
-export default function App() {
+const App = () => {
   const [loaded] = useFonts({
     "Playfair-Display-regular": require("../assets/fonts/static/PlayfairDisplay-Regular.ttf"),
     "Playfair-Display-semibold": require("../assets/fonts/static/PlayfairDisplay-SemiBold.ttf"),
@@ -46,4 +46,6 @@ export default function App() {
       </GameProvider>
     </View>
   );
-}
+};
+
+export default App;

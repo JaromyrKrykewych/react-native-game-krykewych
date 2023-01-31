@@ -15,11 +15,12 @@ import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import { styles } from "./styles";
 
 const UserGame = ({ img, name, player, location, disabled, onHandlePick }) => {
-  const { userPick, robotPick } = useContext(GameContext);
+  const { userPick, robotPick, userScore, robotScore } =
+    useContext(GameContext);
   const [available, setAvailable] = useState(disabled);
   const [selector, setSelector] = useState(null);
   useEffect(() => {
-    userPick !== "" && player === 'robot' ? onHandlePick() : null
+    userPick !== "" && player === "robot" ? onHandlePick() : null;
   }, [userPick, player]);
 
   useEffect(() => {
@@ -31,16 +32,19 @@ const UserGame = ({ img, name, player, location, disabled, onHandlePick }) => {
     }
   }, [player, userPick, robotPick]);
 
-  const onHandlePickUser = (pick) => {
-    onHandlePick(pick);
-    setAvailable(!available);
-  };
+  const zeroCount = robotScore + userScore;
 
   return (
     <View style={location === "bottom" && styles.containerBottom}>
       <View
         style={location === "top" ? styles.boxUserTop : styles.boxUserBottom}
       >
+        {player === "robot" && zeroCount !== 0 ? (
+          <Text style={styles.score}>{robotScore}</Text>
+        ) : null}
+        {player === "user" && zeroCount !== 0 ? (
+          <Text style={styles.score}>{userScore}</Text>
+        ) : null}
         <View style={styles.boxImage}>
           {!img ? (
             player === "robot" ? (
